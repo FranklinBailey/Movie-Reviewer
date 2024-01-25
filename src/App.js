@@ -1,24 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
+import { Container, Nav } from 'react-bootstrap';
+
+import Home from "./views/home";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Container className='fixed-top' style={{ backgroundImage: 'linear-gradient(92.83deg, #4B0082 0%, #000000 100%)' }}>
+
+        <Nav justify variant="tabs,dark" defaultActiveKey="/home" bg="dark">
+
+          <Nav.Item>
+            <Nav.Link href="/">
+              <Link className='homeLink' to="/" style={{ textDecoration: 'none' }}></Link>
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
+
+      </Container>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
   );
 }
 
