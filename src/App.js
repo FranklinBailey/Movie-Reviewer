@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import { Container, Nav } from 'react-bootstrap';
 
 import Home from "./views/home";
+import Discover from "./views/discover";
 
 function App() {
   return (
@@ -23,10 +24,17 @@ function App() {
           </Nav.Item>
         </Nav>
 
+        <Nav.Item>
+          <Nav.Link href='/'>
+            <Link className='discoverLink' to="/" style={{textDecoration: 'none'}}/>
+          </Nav.Link>
+        </Nav.Item>
+
       </Container>
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/Discover" element={<Discover />} />
       </Routes>
     </Router>
   );
