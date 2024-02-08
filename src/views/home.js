@@ -29,7 +29,7 @@ export default function Home() {
 
     // LINKS URL WITH EACH INDIVIDUAL MOVIE IMAGE TO DISPLAY ON WEBPAGE
     const getImageUrl = (posterPath) => {
-        const baseImageUrl = 'https://image.tmbd.org/t/p/w500';
+        const baseImageUrl = 'https://image.tmdb.org/t/p/w500';
         return baseImageUrl + posterPath;
     };
 
@@ -50,7 +50,7 @@ export default function Home() {
     };
 
     const cardStyle = {
-        width: "300px",
+        width: "200px",
         height: "300px",
         border: 'solid black 3px',
         backgroundColor: "paleVioletRed",
@@ -95,14 +95,18 @@ export default function Home() {
                                 <Nav>
                                     <Nav.Item>
                                         <Link to={`/discover?data=${movies.results[0].id}`}
-                                            className="discoverLink"
                                             style={linkStyle}
                                         >
                                             <Card.Img
                                                 variant="top"
-                                                src={getImageUrl(movies.results[0].posterPath)}
+                                                src={getImageUrl(movies.results[0].poster_path)}
                                                 alt="Movie Poster"
-                                                style={{}}
+                                                style={{
+                                                    width: "200px",
+                                                    height: "300px",
+                                                    position: "relative",
+                                                    top: "10px"
+                                                }}
                                             />
                                         </Link>
                                     </Nav.Item>
@@ -115,14 +119,18 @@ export default function Home() {
                                 <Nav>
                                     <Nav.Item>
                                         <Link to={`/topRated?data=${movies.results[0].id}`}
-                                            className="topRatedLink"
                                             style={linkStyle}
                                         >
                                             <Card.Img
                                                 variant="top"
                                                 src={getImageUrl(movies.results[0].posterPath)}
                                                 alt="Movie Poster"
-                                                style={{}}
+                                                style={{
+                                                    width: "200px",
+                                                    height: "300px",
+                                                    position: "relative",
+                                                    top: "10px"
+                                                }}
                                             />
                                         </Link>
                                     </Nav.Item>
@@ -135,14 +143,18 @@ export default function Home() {
                                 <Nav>
                                     <Nav.Item>
                                         <Link to={`/upcoming?data=${movies.results[0].id}`}
-                                            className="upcomingLink"
                                             style={linkStyle}
                                         >
                                             <Card.Img
                                                 variant="top"
                                                 src={getImageUrl(movies.results[0].posterPath)}
                                                 alt="Movie Poster"
-                                                style={{}}
+                                                style={{
+                                                    width: "200px",
+                                                    height: "300px",
+                                                    position: "relative",
+                                                    top: "10px"
+                                                }}
                                             />
                                         </Link>
                                     </Nav.Item>
