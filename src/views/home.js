@@ -1,10 +1,38 @@
 import { Card } from "react-bootstrap";
-import React from "react";
-// import { useState, useEffect } from "react";
+import React, { useReducer } from "react";
+import { useState, useEffect } from "react";
 
 
 
 export default function Home() {
+
+    const [movies, setMovies] = useState(null);
+
+    const url =
+        "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_original_language=en";
+    const options = {
+        method: "GET",
+        headers: {
+            accept: "application/json",
+            Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjODAwODQ0Y2E3NTAwNTVjNzIwZjdlNDk3MjUzNWYwYiIsInN1YiI6IjY0NjYzZDBkMDA2YjAxMDEwNTg4ZmJiMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.hBRpnvHiUVIBXbwhW9islWlaKvT-EaccFSPfZtwrvRE",
+        },
+    };
+
+    // REQUEST DATA FROM THE API
+    useEffect(() => {
+        fetch(url, options)
+            .then((res) => res.json())
+            .then((json) => setMovies(json));
+    }, []);
+
+    // LINKS URL WITH EACH INDIVIDUAL MOVIE IMAGE TO DISPLAY ON WEBPAGE
+    const getImageUrl = (posterPath) => {
+        const baseImageUrl = 'https://image.tmbd.org/t/p/w55';
+        return baseImageUrl + posterPath;
+    };
+
+    // CSS FOR CARDS
 
     const h1Style = {
         display: 'flex',
@@ -41,27 +69,38 @@ export default function Home() {
             <h1 className='homeH1' style={h1Style}>
                 Welcome to TheMovieDB
             </h1>
-            <br/>
+            <br />
             <h1 className="homeH1" style={h1Style}>
-            Movie Reviewer!
+                Movie Reviewer!
             </h1>
-            <div style={containerStyle}>
-                <Card className='discoverLink' style={cardStyle}>
-                    <Card.Footer className='discoverLink' style={cardFooter}>
-                        Discover
-                    </Card.Footer>
-                </Card>
-                <Card className='topRatedLink' style={cardStyle}>
-                <Card.Footer className='topRatedLink' style={cardFooter}>
-                        Top Rated
-                    </Card.Footer>
-                </Card>
-                <Card className='upcomingLink' style={cardStyle}>
-                <Card.Footer className='upcomingLink' style={cardFooter}>
-                        Upcoming
-                    </Card.Footer>
-                </Card>
+            <div>
+                {movies ? (
+                    // CREATES A CARD FOR EACH MOVIE IMAGE
+                    movies.results.length > 0 && (
+                        <div style={containerStyle} key={movies.results[0].id}>
+
+                            < Card className='discoverLink' style={cardStyle} >
+                                <Card.Footer className='discoverLink' style={cardFooter}>
+                                    Discover
+                                </Card.Footer>
+                            </Card>
+                            <Card className='topRatedLink' style={cardStyle}>
+                                <Card.Footer className='topRatedLink' style={cardFooter}>
+                                    Top Rated
+                                </Card.Footer>
+                            </Card>
+                            <Card className='upcomingLink' style={cardStyle}>
+                                <Card.Footer className='upcomingLink' style={cardFooter}>
+                                    Upcoming
+                                </Card.Footer>
+                            </Card>
+                        </div>
+                    )
+                ) : (
+                    "loading. . . . ."
+
+                )}
             </div>
-        </div>
+        </div >
     );
 }
