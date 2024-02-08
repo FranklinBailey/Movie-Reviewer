@@ -1,4 +1,5 @@
-import { Card } from "react-bootstrap";
+import { Card, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import React, { useReducer } from "react";
 import { useState, useEffect } from "react";
 
@@ -61,7 +62,18 @@ export default function Home() {
 
     const cardFooter = {
         position: "relative",
-        top: "160px"
+        top: "30px"
+    }
+
+    const linkStyle = {
+        width: "300px",
+        height: "300px",
+        // border: 'solid black 3px',
+        // backgroundColor: "white",
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
     }
 
     return (
@@ -80,6 +92,16 @@ export default function Home() {
                         <div style={containerStyle} key={movies.results[0].id}>
 
                             < Card className='discoverLink' style={cardStyle} >
+                                <Nav>
+                                    <Nav.Item>
+                                        <Link to={`/discover?data=${movies.results[0].id}`}
+                                                className="discoverLink"
+                                                style={linkStyle}
+                                        >
+
+                                        </Link>
+                                    </Nav.Item>
+                                </Nav>
                                 <Card.Footer className='discoverLink' style={cardFooter}>
                                     Discover
                                 </Card.Footer>
