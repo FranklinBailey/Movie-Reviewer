@@ -29,7 +29,7 @@ export default function Home() {
 
     // LINKS URL WITH EACH INDIVIDUAL MOVIE IMAGE TO DISPLAY ON WEBPAGE
     const getImageUrl = (posterPath) => {
-        const baseImageUrl = 'https://image.tmbd.org/t/p/w55';
+        const baseImageUrl = 'https://image.tmbd.org/t/p/w500';
         return baseImageUrl + posterPath;
     };
 
@@ -53,7 +53,7 @@ export default function Home() {
         width: "300px",
         height: "300px",
         border: 'solid black 3px',
-        backgroundColor: "white",
+        backgroundColor: "paleVioletRed",
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -62,7 +62,7 @@ export default function Home() {
 
     const cardFooter = {
         position: "relative",
-        top: "30px"
+        top: "15px"
     }
 
     const linkStyle = {
@@ -91,14 +91,19 @@ export default function Home() {
                     movies.results.length > 0 && (
                         <div style={containerStyle} key={movies.results[0].id}>
 
-                            < Card className='discoverLink' style={cardStyle} >
+                            <Card className='discoverLink' style={cardStyle} >
                                 <Nav>
                                     <Nav.Item>
                                         <Link to={`/discover?data=${movies.results[0].id}`}
-                                                className="discoverLink"
-                                                style={linkStyle}
+                                            className="discoverLink"
+                                            style={linkStyle}
                                         >
-
+                                            <Card.Img
+                                                variant="top"
+                                                src={getImageUrl(movies.results[0].posterPath)}
+                                                alt="Movie Poster"
+                                                style={{}}
+                                            />
                                         </Link>
                                     </Nav.Item>
                                 </Nav>
@@ -107,11 +112,41 @@ export default function Home() {
                                 </Card.Footer>
                             </Card>
                             <Card className='topRatedLink' style={cardStyle}>
+                                <Nav>
+                                    <Nav.Item>
+                                        <Link to={`/topRated?data=${movies.results[0].id}`}
+                                            className="topRatedLink"
+                                            style={linkStyle}
+                                        >
+                                            <Card.Img
+                                                variant="top"
+                                                src={getImageUrl(movies.results[0].posterPath)}
+                                                alt="Movie Poster"
+                                                style={{}}
+                                            />
+                                        </Link>
+                                    </Nav.Item>
+                                </Nav>
                                 <Card.Footer className='topRatedLink' style={cardFooter}>
                                     Top Rated
                                 </Card.Footer>
                             </Card>
                             <Card className='upcomingLink' style={cardStyle}>
+                                <Nav>
+                                    <Nav.Item>
+                                        <Link to={`/upcoming?data=${movies.results[0].id}`}
+                                            className="upcomingLink"
+                                            style={linkStyle}
+                                        >
+                                            <Card.Img
+                                                variant="top"
+                                                src={getImageUrl(movies.results[0].posterPath)}
+                                                alt="Movie Poster"
+                                                style={{}}
+                                            />
+                                        </Link>
+                                    </Nav.Item>
+                                </Nav>
                                 <Card.Footer className='upcomingLink' style={cardFooter}>
                                     Upcoming
                                 </Card.Footer>
