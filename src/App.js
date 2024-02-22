@@ -4,6 +4,8 @@ import { Container, Nav } from 'react-bootstrap';
 
 import Home from "./views/home";
 import Discover from "./views/discover";
+import TopRated from './views/topRated';
+import Upcoming from './views/upcoming';
 
 function App() {
   return (
@@ -30,11 +32,25 @@ function App() {
           </Nav.Link>
         </Nav.Item>
 
+        <Nav.Item>
+          <Nav.Link href='/'>
+            <Link className='topRatedLink' to="/" style={{textDecoration: 'none'}}/>
+          </Nav.Link>
+        </Nav.Item>
+
+        <Nav.Item>
+          <Nav.Link href='/'>
+            <Link className='upcomingLink' to="/" style={{textDecoration: 'none'}}/>
+          </Nav.Link>
+        </Nav.Item>
+
       </Container>
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Discover" element={<Discover />} />
+        <Route path="/TopRated" element={<TopRated />} />
+        <Route path="/Upcoming" element={<Upcoming />} />
       </Routes>
     </Router>
   );

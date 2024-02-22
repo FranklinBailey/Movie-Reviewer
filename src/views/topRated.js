@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 
 
-export default function Discover() {
+export default function TopRated() {
 
     const [movies, setMovies] = useState(null);
 

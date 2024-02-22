@@ -4,7 +4,7 @@
 
 body{
   background-image: 
-  url('../public/background.webp');
+  url('../public/filmBackground2.webp');
   background-repeat: no-repeat;
   background-attachment: fixed; /*Use 'scroll' to make the header and footer scroll with the background.*/
   background-size: cover;
